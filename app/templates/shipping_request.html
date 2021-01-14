@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form method="post" action="{{url_for('.package')}}">
+    {{form.csrf_token}}
+    <div>
+      {{form.sender.label}} {{form.sender}}
+    </div>
+    <div>
+      {{form.recipient.label}} {{form.recipient}}
+    </div>
+    <div>
+      {{form.origin.label}} {{form.origin}}
+    </div>
+    <div>
+      {{form.destination.label}} {{form.destination}}
+    </div>
+    <div>
+      {{form.express_shipping.label}} {{form.express_shipping}}
+    </div>
+    {{form.submit}} {{form.cancel}}    
+  </form>
+</body>
+</html>
