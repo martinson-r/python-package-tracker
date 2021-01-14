@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <a href='/new_package'>Ship Now</a>
+  <div style="display: flex; flex-direction: column;">
+    <ul>
+      {% for package in packages %}
+      <li>
+        {{package.sender}} {{package.recipient}} {{package.origin}} {{package.destination}} {{package.location}}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</body>
+
+</html>

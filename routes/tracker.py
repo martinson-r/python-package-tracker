@@ -7,7 +7,8 @@ bp = Blueprint('Tracker', __name__, url_prefix="")
 
 @bp.route('/')
 def index():
-  return "Package tracker!"
+  packages = Package.query.all()
+  return render_template('package_status.html', packages=packages)
 
 
 @bp.route('/new_package', methods=['GET', 'POST'])
@@ -15,12 +16,9 @@ def package():
   form = ShippingForm()
   if form.validate_on_submit():
     package = Package()
-    # data = form.data
-    # data.pop("submit")
-    # data.pop("cancel")
-    # data.pop("csrf_token")
     form.populate_obj(package)
-    db.session.add(package)
-    db.session.commit()
+    package.location = package.origin
+    package.save()
+    Package.advance_all_locations()
     return redirect(url_for('.index'))
   return render_template('shipping_request.html', form=form)
