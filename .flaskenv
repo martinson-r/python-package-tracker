@@ -1,1 +1,2 @@
 FLASK_APP=package_tracker.py
+SQLALCHEMY_TRACK_MODIFICATIONS=False
